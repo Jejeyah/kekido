@@ -274,7 +274,13 @@ header {
   color: #0A0A0A;
   letter-spacing: 1.19px;
   margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Prevents text from overflowing */
+  display: block;
 }
+
 
 .product-card p {
   color: #FB983C;
@@ -774,7 +780,10 @@ display: none;
   text-align: left;
   transition: transform 0.2s ease-in-out;
   width: 100%;
-  margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Makes all cards equal height */
 }
 
 .bread-card:hover {
@@ -793,7 +802,13 @@ display: none;
   font-weight: bold;
   color: #6E5139;
   margin: 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 210px; /* Adjust this based on your card width */
+  display: block;
 }
+
 
 .bread-price {
   color: #FB983C;
@@ -891,6 +906,7 @@ display: none;
   margin-right: 250px;
   margin-top: 68px;
 }
+
 
 /*TOASTTT*/
 #cart-full-toast {

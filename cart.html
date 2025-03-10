@@ -4,31 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="script.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <title>Kekido Japanese Bakery & Cake Shop</title>
+    <title>Your cart - Kekido Japanese Bakery & Cake Shop</title>
 </head>
 <body>
     
     <div class="announcement" id="discount">Get ₱100 OFF your total bill for every ₱1,000 purchase!</div>
     
-    <div id="cart-notification" class="cart-notification">
-        <div class="cart-header">
-            <span class="checkmark">✔</span>
-            <p>Item added to your cart</p>
-        </div>
-        <div class="cart-item">
-            <img id="cart-item-img" src="" alt="">
-            <span id="cart-item-name" class="cart-item-details"></span>
-        </div>
-    </div>
-
-    <div id="cart-full-toast">🛒 Your cart is full! You cannot add more than 99 items.</div>
-
-
     <header>
     <nav class="navbar">
         <div class="nav-left">
@@ -38,7 +23,7 @@
         </div>
 
         <div class="nav-center">
-            <a href="#"><img src="primarylogo.png" alt="kekido logo" class="logo" /></a>
+            <a href="index.html"><img src="primarylogo.png" alt="kekido logo" class="logo" /></a>
         </div>
 
         <ul class="nav-links">
@@ -48,11 +33,11 @@
                 <ul class="dropdown-content">
                     <li><a href="bread.html">Bread</a></li>
                     <li><a href="cakes.html">Cakes</a></li>
-                    <li><a href="#">Pastries</a></li>
+                    <li><a href="pastry.html">Pastries</a></li>
                 </ul>
             </li>
             <li><a href="FAQs.html">FAQs</a></li>
-            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="About-us.html">About Us</a></li>
         </ul>
 
         <div class="nav-right">
@@ -67,85 +52,29 @@
     </nav>
     </header>
 
-  <h2 class="category-header">Breads</h2>
+    <main class="cart-container">
+        <h2>Your Cart</h2>
+        <a href="index.html" class="continue-shopping">Continue shopping</a>
 
-    <div class="filters">
-        <div class="dropdown">
-            <button class="dropbutton">Filter: Availability ▾</button>
-            <div class="dropdwn-cntnt">
-                <a href="#">All</a>
-                <a href="#">In Stock</a>
-                <a href="#">Out of Stock</a>
-                <a href="#">Limited Stock</a>
-            </div>
-        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th id="quantity">Quantity</th>
+                    <th id="total">Total</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </tbody>
+        </table>
 
-        <div class="dropdown">
-            <button class="dropbutton">Price ▾</button>
-            <div class="dropdwn-cntnt">
-                <a href="#" class="price-sort-option" data-sort="low-to-high">Low to High</a>
-                <a href="#" class="price-sort-option" data-sort="high-to-low">High to Low</a>
-            </div>
+        <div class="cart-summary">
+            <h3>Subtotal <span id="cart-subtotal">₱0.00</span></h3>
+            <button id="checkout-button">Checkout</button>
         </div>
-    </div>
-
-    <div class="bread-container">
-        <div class="bread-card">
-            <img src="img/brioche.png" alt="Brioche">
-            <p class="bread-name">Brioche Au Sucre</p>
-            <p class="bread-price">₱90</p>
-            <button class="add-to-cart">+</button>
-        </div>
-        <div class="bread-card">
-            <img src="img/anpan bread.png" alt="Anpan">
-            <p class="bread-name">Anpan</p>
-            <p class="bread-price">₱120</p>
-            <button class="add-to-cart">+</button>
-        </div>
-        <div class="bread-card">
-            <img src="img/currypan.png" alt="Curry Pan">
-            <p class="bread-name">Curry Pan</p>
-            <p class="bread-price">₱80</p>
-            <button class="add-to-cart">+</button>
-        </div>
-        <div class="bread-card">
-            <img src="img/shokupan.png" alt="Shokupan">
-            <p class="bread-name">Shokupan</p>
-            <p class="bread-price">₱150</p>
-            <button class="add-to-cart">+</button>
-        </div>
-            <div class="bread-card">
-                <img src="img/Saffron Sugar Buns - Bread By Elise.png" alt="Saffron">
-                <p class="bread-name">Saffron Sugar Buns</p>
-                <p class="bread-price">₱99</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/Fried Mantou with Condensed Milk.png" alt="Fried">
-                <p class="bread-name">Fried Mantou with Condensed Milk</p>
-                <p class="bread-price">₱89</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/ふんわりやわらか♪白パンレシピ _ お菓子・パン材料・ラッピングの通販【cotta＊コッタ】.png" alt="White">
-                <p class="bread-name">White Fluffy Moist Bread</p>
-                <p class="bread-price">₱89</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/Korean Twisted Donuts (Kkwabaegi) _ Two Plaid Aprons 1.png" alt="Korean">
-                <p class="bread-name">Korean Twisted Donuts</p>
-                <p class="bread-price">₱120</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/choco curnet.png" alt="curnet">
-                <p class="bread-name">Choco Curnets</p>
-                <p class="bread-price">₱190</p>
-                <button class="add-to-cart">+</button>
-            </div>
-    </div>
-        
+    </main>
+    
 
     <footer>
         <div class="footer-container">
@@ -156,16 +85,16 @@
                 <div class="shop-links">
                     <h3>Shop Links</h3>
                     <ul>
-                        <li><a href="#">Bread</a></li>
-                        <li><a href="#">Pastries</a></li>
-                        <li><a href="#">Cakes</a></li>
+                        <li><a href="bread.html">Bread</a></li>
+                        <li><a href="pastry.html">Pastries</a></li>
+                        <li><a href="cakes.html">Cakes</a></li>
                     </ul>
                 </div>
                 <div class="quick-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="About-us.html">About Us</a></li>
+                        <li><a href="FAQs.html">FAQs</a></li>
                     </ul>
                 </div>
             </div>
@@ -180,7 +109,10 @@
             <p>© 2025, Kekido Japanese Bakery and Cake Shop.</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script src="cart.js"></script>
+  <script src="script.js"></script>
     <script src="add-to-cart.js"></script>
+
 </body>
 </html>

@@ -27,8 +27,7 @@
     </div>
 
     <div id="cart-full-toast">🛒 Your cart is full! You cannot add more than 99 items.</div>
-
-
+    
     <header>
     <nav class="navbar">
         <div class="nav-left">
@@ -42,7 +41,7 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li class="dropdown">
                 <button class="dropbtn"> All Products <i class="fa fa-caret-down"></i></button>
                 <ul class="dropdown-content">
@@ -52,7 +51,7 @@
                 </ul>
             </li>
             <li><a href="FAQs.html">FAQs</a></li>
-            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="#">About Us</a></li>
         </ul>
 
         <div class="nav-right">
@@ -67,85 +66,94 @@
     </nav>
     </header>
 
-  <h2 class="category-header">Breads</h2>
-
-    <div class="filters">
-        <div class="dropdown">
-            <button class="dropbutton">Filter: Availability ▾</button>
-            <div class="dropdwn-cntnt">
-                <a href="#">All</a>
-                <a href="#">In Stock</a>
-                <a href="#">Out of Stock</a>
-                <a href="#">Limited Stock</a>
-            </div>
+    <section>
+    <div class="pic">
+        <img src="home-pic.png" alt="">
+        <img src="overylay2.png" alt="">
+        <img src="overylay1.png" alt="">
+        <div class="title">
+            <p>Welcome to Kekido!</p>
         </div>
+    </div>
+    </section> 
 
-        <div class="dropdown">
-            <button class="dropbutton">Price ▾</button>
-            <div class="dropdwn-cntnt">
-                <a href="#" class="price-sort-option" data-sort="low-to-high">Low to High</a>
-                <a href="#" class="price-sort-option" data-sort="high-to-low">High to Low</a>
+    <section class="best-selling">
+    <h2>Our Best Selling <span class="line">|</span> <span>This week</span></h2>
+    <div class="carousel-container">
+        <div class="product-container">
+            <div class="product-card">
+                <a href="#"><img src="cookie.png" alt="Choco Cookies"></a>
+                <h3>Choco Cookies (6 pcs)</h3>
+                <div class="price">
+                    <p>₱90</p>
+                    <button class="add-to-cart">+</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <a href="#"><img src="bb-cc.png" alt="Blueberry Cheesecake"></a>
+                <h3>Blueberry Cheesecake</h3>
+                <div class="price">
+                    <p>₱75</p>
+                    <button class="add-to-cart">+</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <a href="#"><img src="royal.png" alt="Choco Mini Cakes"></a>
+                <h3>Choco Royal Mini Cakes</h3>
+                <div class="price">
+                    <p>₱95</p>
+                    <button class="add-to-cart">+</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <a href="#"><img src="cinna.png" alt="Cinnamon Rolls"></a>
+                <h3>Cinnamon Rolls</h3>
+                <div class="price">
+                    <p>₱75</p>
+                    <button class="add-to-cart">+</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="bread-container">
-        <div class="bread-card">
-            <img src="img/brioche.png" alt="Brioche">
-            <p class="bread-name">Brioche Au Sucre</p>
-            <p class="bread-price">₱90</p>
-            <button class="add-to-cart">+</button>
+    <div class="carousel-navigation">
+        <button class="arrow left" onclick="moveCarousel(currentIndex - 1)">
+            <svg viewBox="0 0 1024 1024" fill="black" class="icon" xmlns="http://www.w3.org/2000/svg">
+                <path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z"/>
+            </svg>
+        </button>  
+    
+        <div class="dots">
+            <span class="dot active" onclick="moveCarousel(0)"></span>
+            <span class="dot" onclick="moveCarousel(1)"></span>
+            <span class="dot" onclick="moveCarousel(2)"></span>
         </div>
-        <div class="bread-card">
-            <img src="img/anpan bread.png" alt="Anpan">
-            <p class="bread-name">Anpan</p>
-            <p class="bread-price">₱120</p>
-            <button class="add-to-cart">+</button>
+    
+        <button class="arrow right" onclick="moveCarousel(currentIndex + 1)">
+            <svg viewBox="0 0 1024 1024" fill="black" class="icon" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                <path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z"/>
+            </svg>
+        </button>
+    </div>    
+    </section>
+
+    <section class="collections">
+    <h2>Featured Collections</h2>
+    <div class="grid-container">
+        <div class="category">
+            <a href="#"><img src="bread.png" alt="Bread">
+            <p class="category-tt">Bread <span>→</span></p></a>
         </div>
-        <div class="bread-card">
-            <img src="img/currypan.png" alt="Curry Pan">
-            <p class="bread-name">Curry Pan</p>
-            <p class="bread-price">₱80</p>
-            <button class="add-to-cart">+</button>
+        <div class="category">
+            <a href="#"><img src="pastries.png" alt="Pastries">
+            <p class="category-tt">Pastries <span>→</span></p></a>
         </div>
-        <div class="bread-card">
-            <img src="img/shokupan.png" alt="Shokupan">
-            <p class="bread-name">Shokupan</p>
-            <p class="bread-price">₱150</p>
-            <button class="add-to-cart">+</button>
+        <div class="category-large">
+            <a href="cakes.html"><img src="cakes.png" alt="Cakes">
+            <p class="category-tt">Cakes <span>→</span></p></a>
         </div>
-            <div class="bread-card">
-                <img src="img/Saffron Sugar Buns - Bread By Elise.png" alt="Saffron">
-                <p class="bread-name">Saffron Sugar Buns</p>
-                <p class="bread-price">₱99</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/Fried Mantou with Condensed Milk.png" alt="Fried">
-                <p class="bread-name">Fried Mantou with Condensed Milk</p>
-                <p class="bread-price">₱89</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/ふんわりやわらか♪白パンレシピ _ お菓子・パン材料・ラッピングの通販【cotta＊コッタ】.png" alt="White">
-                <p class="bread-name">White Fluffy Moist Bread</p>
-                <p class="bread-price">₱89</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/Korean Twisted Donuts (Kkwabaegi) _ Two Plaid Aprons 1.png" alt="Korean">
-                <p class="bread-name">Korean Twisted Donuts</p>
-                <p class="bread-price">₱120</p>
-                <button class="add-to-cart">+</button>
-            </div>
-            <div class="bread-card">
-                <img src="img/choco curnet.png" alt="curnet">
-                <p class="bread-name">Choco Curnets</p>
-                <p class="bread-price">₱190</p>
-                <button class="add-to-cart">+</button>
-            </div>
     </div>
-        
+    </section>
 
     <footer>
         <div class="footer-container">
@@ -180,6 +188,7 @@
             <p>© 2025, Kekido Japanese Bakery and Cake Shop.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
     <script src="add-to-cart.js"></script>
 </body>

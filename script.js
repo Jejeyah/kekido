@@ -92,10 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
       console.warn("⚠️ Dots not found.");
   }
 
-  // 🔽 Price Sorting Logic
   const priceSortOptions = document.querySelectorAll(".price-sort-option");
-  const productContainer = document.querySelector(".bread-container");
+
+  // Detect if we're on the bread or cake page
+  let productContainer = document.querySelector(".bread-container") || document.querySelector(".product");
   let products = Array.from(document.querySelectorAll(".bread-card"));
+
+  if (products.length === 0) {
+      products = Array.from(document.querySelectorAll(".product-card")); // Cakes fallback
+  }
+
+  console.log("🔍 Detected Container:", productContainer);
+  console.log("🔍 Detected Products:", products);
 
   if (!productContainer || products.length === 0) {
       console.error("❌ ERROR: Elements not found. Check class names in HTML!");
@@ -103,27 +111,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   priceSortOptions.forEach(option => {
-      option.addEventListener("click", function () {
-          console.log("🔄 Sorting triggered:", this.dataset.sort);
+    option.addEventListener("click", function () {
+        console.log("🔄 Sorting triggered:", this.dataset.sort);
 
-          let sortedProducts = [...products]; // Copy array before sorting
-          sortedProducts.sort((a, b) => {
-              return this.dataset.sort === "low-to-high"
-                  ? getPrice(a) - getPrice(b)
-                  : getPrice(b) - getPrice(a);
-          });
+        let sortedProducts = [...products]; // Copy array before sorting
+        sortedProducts.sort((a, b) => {
+            return this.dataset.sort === "low-to-high"
+                ? getPrice(a) - getPrice(b)
+                : getPrice(b) - getPrice(a);
+        });
 
-          console.log("✅ Sorted Prices:", sortedProducts.map(p => getPrice(p)));
+        console.log("✅ Sorted Prices:", sortedProducts.map(p => getPrice(p)));
 
-          // Reorder elements without clearing innerHTML
-          sortedProducts.forEach(product => productContainer.appendChild(product));
-      });
-  });
+        // Reorder elements properly
+        sortedProducts.forEach(product => product.parentNode.appendChild(product));
+    });
+});
 
-  function getPrice(product) {
-      let priceText = product.querySelector(".bread-price").textContent.replace("₱", "").trim();
-      let price = parseFloat(priceText);
-      console.log("💰 Extracted Price:", price);
-      return price || 0;
-  }
+function getPrice(product) {
+    let priceElement = product.querySelector(".bread-price") || product.querySelector(".price p");
+    if (!priceElement) return 0; // Prevent errors
+
+    let priceText = priceElement.textContent.replace(/[^\d.]/g, "").trim(); // Remove non-numeric characters
+    let price = parseFloat(priceText);
+
+    console.log(`💰 Extracted Price for ${product.className}:`, price);
+    return isNaN(price) ? 0 : price;
+}
 });

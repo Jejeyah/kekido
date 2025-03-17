@@ -1,0 +1,159 @@
+/* Back Button Wrapper */
+.ew-back-wrapper {
+    position: absolute; 
+    margin-top: 68px; /* Relative to the container */
+    margin-left: 252px; 
+    z-index: 100; 
+}
+
+.ew-back {
+    text-decoration: none;
+    font-size: 24px; 
+    font-weight: bolder;
+    color: #6E5139;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.ew-back:hover {
+    color: #6E5139;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow effect */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+
+/* Main Container (Image on Top for Small Screens) */
+.ew-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack items vertically by default */
+    align-items: center;
+    gap: 30px;
+    max-width: 1050px;
+    width: 100%;
+    margin: 180px auto; /* Reduced margin for better spacing */
+    padding: 0 20px;
+}
+
+/* Image Section */
+.ew-image-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.ew-img {
+    max-width: 500px;
+    border-radius: 20px;
+    width: 457px;
+    height: 457px;
+    object-fit: cover;
+    border: 1px solid #6E5139;
+}
+
+/* Info Section */
+.ew-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.ew-price {
+    font-size: 22px;
+    color: #E6842B; /* Change to your desired color */
+}
+
+.ew-name {
+ font-size: 44px;
+}
+
+.ew-desc{
+    font-size: 15px;
+}
+
+/* Responsive Layout: Side-by-Side on Larger Screens */
+@media (min-width: 768px) {
+    .ew-container {
+        flex-direction: row-reverse; /* Image on Right, Info on Left */
+        justify-content: space-between;
+    }
+
+    .ew-image-wrapper {
+        justify-content: flex-end;
+    }
+
+    .ew-info {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/* Button & Dropdown Styling */
+.ew-info .ew-size,
+.ew-info #add-to-cart {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    min-width: 340px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.ew-info .ew-size {
+    border: 1px solid #ccc;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    transition: border 0.1s ease; /* Smooth transition */
+}
+
+.ew-info .ew-size:hover {
+    border: 1px solid #252322; /* Make the border bolder and change the color */
+}
+
+/* Add to Cart Button */
+#add-to-cart {
+    background-color: #FB983C;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+#add-to-cart:hover {
+    background-color: #E6842B;
+}
+
+/* Responsive Fixes */
+@media (max-width: 992px) {
+    .ew-image-wrapper {
+        width: 100%;
+    }
+
+    .ew-info {
+        align-items: center;
+    }
+
+    .ew-name {
+        font-size: 34px;
+    }
+
+    .ew-price {
+        font-size: 22px;
+    }
+
+    .ew-desc {
+        font-size: 15px;
+    }
+
+    /* Ensure dropdown appears properly */
+    .ew-size {
+        position: relative;
+        z-index: 10;
+    }
+}

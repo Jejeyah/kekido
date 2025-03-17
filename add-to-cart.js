@@ -1,4 +1,3 @@
-
 // Function to load the cart from local storage
 function getCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
@@ -13,9 +12,12 @@ function saveCart(cart) {
 function updateCartIcon() {
     let cart = getCart();
     let totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-    
+
     // Limit display to 99+
     document.getElementById("cart-count").textContent = totalQuantity > 99 ? "99" : totalQuantity;
+
+    // Hide cart icon if empty
+    document.getElementById("cart-count").style.visibility = totalQuantity === 0 ? "hidden" : "visible";
 }
 
 // Function to add an item to the cart
@@ -52,9 +54,9 @@ function addToCart(productId, productName, productPrice, productImage) {
     updateCartIcon();
     showCartNotification(productName, productImage);
 
-    // 🔹 Ensure the cart page updates immediately
+    // Reload cart page if already on it
     if (window.location.pathname.includes("cart.html")) {
-        loadCart(); // Reload cart page if already on it
+        loadCart();
     }
 }
 
@@ -65,19 +67,7 @@ function showCartNotification(productName, productImage) {
     document.getElementById("cart-item-img").src = productImage;
 
     notification.classList.add("show");
-    setTimeout(() => notification.classList.remove("show"), 2000); // Hide after 2 seconds
-}
-
-function updateCartCount() {
-    let cartCountElement = document.getElementById("cart-count");
-    let count = cart.length;
-    
-    if (count === 0) {
-        cartCountElement.style.visibility = "hidden"; // Hide when no items
-    } else {
-        cartCountElement.style.visibility = "visible"; // Show when > 0
-        cartCountElement.innerText = count > 99 ? "99" : count; // Limit to "99+"
-    }
+    setTimeout(() => notification.classList.remove("show"), 2000);
 }
 
 // Function to show the "Cart Full" toast
@@ -87,7 +77,7 @@ function showCartFullToast() {
 
     setTimeout(() => {
         toast.style.display = "none";
-    }, 3000); // Hide after 3 seconds
+    }, 3000);
 }
 
 // Attach event listeners to all "Add to Cart" buttons
@@ -100,12 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!productCard) return;
 
             let productName = productCard.querySelector("h3, .bread-name").textContent;
-            
             let priceElement = productCard.querySelector(".price p, .bread-price");
             let productPrice = parseInt(priceElement.textContent.replace("₱", "").replace(",", ""));
-
             let productImage = productCard.querySelector("img").src;
-            let productId = productName.replace(/\s+/g, "-").toLowerCase() + "-" + Math.random().toString(36).substr(2, 5);
+
+            // Extract productId from URL (fallback to productName if missing)
+            let productLink = productCard.querySelector("a").getAttribute("href");
+            let productId = new URLSearchParams(productLink.split('?')[1]).get('id') || productName.replace(/\s+/g, "-").toLowerCase();
 
             addToCart(productId, productName, productPrice, productImage);
         });
